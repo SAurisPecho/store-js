@@ -1,8 +1,12 @@
 const $dProducts = document.getElementById("dProducts");
-const $iSearch = document.getElementById("iSearch");
+// const $iSearch = document.getElementById("iSearch");
+
+import { productsArray } from "./products.js";
+
+productsArray
 
 //CARDS DE FORMA DINAMICA
-function createCard (product) {
+export function createCard (product) {
     return `
     <a class="product-card" href="./details.html?id=${product.id}">
         <img class="product-img" src="${product.image}" alt="${product.id}" />
@@ -23,19 +27,21 @@ function createCard (product) {
 }
 
 // Impresion de cards
-let loadProducts = (productsArray) => { // guardamos en una variable una función que reciba como parámetro el array de products 
-   let productsTemplate = "";   //Definir una variable para concatenar las tarjetas de productos
+export let loadProducts = (productsArray, container) => { // guardamos en una variable una función que reciba como parámetro el array de products 
+   if (container) {
+    let productsTemplate = "";   //Definir una variable para concatenar las tarjetas de productos
     for (const product of productsArray) {   // iterar con for of para que cada vuelta cargue unna tarjeta
        productsTemplate += createCard(product); // dentro de for of colocamos products template +create card para cada producto, genera la representación HTML utilizando la plantilla y lo agrega al contenedor
       $dProducts.innerHTML = productsTemplate;
     }
+    }
 }
 
-    document.addEventListener("DOMContentLoaded", () => { // Evento que se dispara cuando el DOM se ha cargado completamente, se ejecuta la función para cargar los productos 
-        if ($dProducts){                                  //si el elemento $dProducts = id dProducts existe 
-         loadProducts(productsArray);                     //se llama a la función loadProducts que tiene como argumento productosArray donde estan todos los productos
-        }
-    })
+    // document.addEventListener("DOMContentLoaded", () => { // Evento que se dispara cuando el DOM se ha cargado completamente, se ejecuta la función para cargar los productos 
+    //     if ($dProducts){                                  //si el elemento $dProducts = id dProducts existe 
+    //      loadProducts(productsArray);                     //se llama a la función loadProducts que tiene como argumento productosArray donde estan todos los productos
+    //     }
+    // })
 
 // // //EVENTO 
 // $iSearch.addEventListener("keyup", (event) => {  //el evento se realizara en el input 

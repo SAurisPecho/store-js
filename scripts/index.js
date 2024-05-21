@@ -1,21 +1,29 @@
-const comprar = ()=> {
-let totalApagarCliente = 0;
-let totalProductos = Number(prompt("¿cuantos productos desea llevar?"));
+//LAYOUT
+import { navegationBarr, options, fotterBarr, optionsFotter } from "./layout.js";
 
-for (let index = 1; index <= totalProductos; index++) {
-    const nombre = prompt("¿que producto desea llevar?");
-    const cantidad = Number(prompt ("¿cuantas unidades?"));
-    const precio = Number(prompt("¿cuanto sale cada unidad?"));
-    const subtotal = cantidad * precio;
-    totalApagarCliente = totalApagarCliente + subtotal;
-    console.log("haz llevado " + cantidad +" unidades de " + nombre + " que costaron " + precio);
-}
-console.log("el total a pagar por los productos es s/." + totalApagarCliente);
-//alert("el total a pagar por los productos es s/." + totalApagar); 
-return totalApagarCliente;
-}
-const total1 = comprar();
-const total2 = comprar();
-const total3 = comprar();
-const total = total1 + total2 + total3;
-console.log("el total registrado es s/." + total);
+const navSelector = document.getElementById("nav");
+navegationBarr(navSelector, options);
+
+const fotterSelector = document.querySelector("#fotter");
+fotterBarr(fotterSelector, optionsFotter);
+
+//INICIAR/CIERRE DE SECCION 
+import { onlineLocalStorage, initialEvent } from "./online.js";
+
+onlineLocalStorage();
+initialEvent();
+
+//MAIN TODAS LAS CARTS DE PRODUCTOS
+import { productsArray } from "./products.js"
+import { createCard, loadProducts } from "./productCards.js";
+
+//MAIN FILTRADO DE PRODUCTOS
+import { captureText } from "./filterProducts.js";
+
+document.addEventListener("DOMContentLoaded", () => {         // Evento que se dispara cuando el DOM se ha cargado completamente, se ejecuta la función para cargar los productos
+    const $dProducts = document.getElementById("dProducts");
+    if ($dProducts){
+        loadProducts(productsArray, createCard);        //se llama a la función loadProducts que tiene como argumento productosArray donde estan todos los productos
+    }
+    captureText();
+})

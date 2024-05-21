@@ -12,48 +12,48 @@
 // console.log(producto1);
 // console.log(producto1.nombre);
 
-class Product {
-    constructor (id, title, price, stock, images,onsale, supplier, discount, description,imgs) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.stock = stock;
-        this.images = images;
-        this.onsale = onsale;
-        this._supplier = supplier;
-        this.discount = discount;
-        this.description = description;
-        this.imgs = imgs;
-    }
-    //metodos getter y setter del atributo privado
-    get getsupplier () {
-        return this._supplier;
-    }
-    set setsupplier (newSupplier) {
-        this._supplier = newSupplier;
-    }
-    sellUnits (units) {
-        if (units> this.stock){
-            console.log("No hay suficiente stock");
-            return;
-        }
-            this.stock = this.stock - units
-    }
-}
-//define los arrays de imágenes de cada producto creado, esto fue cambiado a este lugar para que pueda ser usado por las instancias
-const prod1Imgs = ["https://upload.wikimedia.org/wikipedia/commons/7/7c/Samsung_Galaxy_Note_7.png", "https://example.com/image2.jpg","https://example.com/image3.jpg"];
-const prod2Imgs = ["https://tiendasishop.com/media/catalog/product/m/h/mhdj3lz_a.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700","https://example.com/image2.jpg", "https://example.com/image3.jpg"];
-const prod3Imgs = ["https://nextlevel.com.bo/cdn/shop/products/nstore_1500x.png?v=1685021675","https://example.com/image2.jpg"];
-const prod4Imgs = ["https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
-const prod5Imgs = ["https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
-const prod6Imgs = ["https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
+// class Product {
+//     constructor (id, title, price, stock, images,onsale, supplier, discount, description,imgs) {
+//         this.id = id;
+//         this.title = title;
+//         this.price = price;
+//         this.stock = stock;
+//         this.images = images;
+//         this.onsale = onsale;
+//         this._supplier = supplier;
+//         this.discount = discount;
+//         this.description = description;
+//         this.imgs = imgs;
+//     }
+//     //metodos getter y setter del atributo privado
+//     get getsupplier () {
+//         return this._supplier;
+//     }
+//     set setsupplier (newSupplier) {
+//         this._supplier = newSupplier;
+//     }
+//     sellUnits (units) {
+//         if (units> this.stock){
+//             console.log("No hay suficiente stock");
+//             return;
+//         }
+//             this.stock = this.stock - units
+//     }
+// }
+// //define los arrays de imágenes de cada producto creado, esto fue cambiado a este lugar para que pueda ser usado por las instancias
+// const prod1Imgs = ["https://upload.wikimedia.org/wikipedia/commons/7/7c/Samsung_Galaxy_Note_7.png", "https://example.com/image2.jpg","https://example.com/image3.jpg"];
+// const prod2Imgs = ["https://tiendasishop.com/media/catalog/product/m/h/mhdj3lz_a.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700","https://example.com/image2.jpg", "https://example.com/image3.jpg"];
+// const prod3Imgs = ["https://nextlevel.com.bo/cdn/shop/products/nstore_1500x.png?v=1685021675","https://example.com/image2.jpg"];
+// const prod4Imgs = ["https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
+// const prod5Imgs = ["https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
+// const prod6Imgs = ["https://i.postimg.cc/Jn2C5W84/galaxy1.webp", "https://example.com/image2.jpg"];
 
-const prod1 = new Product("001121ab", "celular", 999, 14, "https://upload.wikimedia.org/wikipedia/commons/7/7c/Samsung_Galaxy_Note_7.png", true, "gold", "50%", "Space Gray", prod1Imgs);
-const prod2 = new Product("001122abc", "celular1", 1001, 18, "https://tiendasishop.com/media/catalog/product/m/h/mhdj3lz_a.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700", true, "black", "70%", "Space Gray", prod2Imgs);
-const prod3 = new Product("0011223abcd", "celular2", 1000, 10, "https://nextlevel.com.bo/cdn/shop/products/nstore_1500x.png?v=1685021675", true, "black", "20%", "Space Gray", prod3Imgs);
-const prod4 = new Product("11223344efgh", "celular3", 2000, 16, "https://i.postimg.cc/Jn2C5W84/galaxy1.webp", true, "gold", "0%", "Space Gray", prod4Imgs);
-const prod5 = new Product("012345ap5", "telefono", 1500, 12, "https://falabella.scene7.com/is/image/FalabellaPE/gsc_120506985_2697250_1?wid=800&hei=800&qlt=70", true, "black", "10%", "Space Gray", prod5Imgs);
-const prod6 = new Product("012345apb6", "telefono", 1500, 12, "https://falabella.scene7.com/is/image/FalabellaPE/gsc_120506985_2697250_1?wid=800&hei=800&qlt=70", true, "black", "25%", "Space Gray", prod6Imgs);
+// const prod1 = new Product("001121ab", "celular", 999, 14, "https://upload.wikimedia.org/wikipedia/commons/7/7c/Samsung_Galaxy_Note_7.png", true, "gold", "50%", "Space Gray", prod1Imgs);
+// const prod2 = new Product("001122abc", "celular1", 1001, 18, "https://tiendasishop.com/media/catalog/product/m/h/mhdj3lz_a.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700", true, "black", "70%", "Space Gray", prod2Imgs);
+// const prod3 = new Product("0011223abcd", "celular2", 1000, 10, "https://nextlevel.com.bo/cdn/shop/products/nstore_1500x.png?v=1685021675", true, "black", "20%", "Space Gray", prod3Imgs);
+// const prod4 = new Product("11223344efgh", "celular3", 2000, 16, "https://i.postimg.cc/Jn2C5W84/galaxy1.webp", true, "gold", "0%", "Space Gray", prod4Imgs);
+// const prod5 = new Product("012345ap5", "telefono", 1500, 12, "https://falabella.scene7.com/is/image/FalabellaPE/gsc_120506985_2697250_1?wid=800&hei=800&qlt=70", true, "black", "10%", "Space Gray", prod5Imgs);
+// const prod6 = new Product("012345apb6", "telefono", 1500, 12, "https://falabella.scene7.com/is/image/FalabellaPE/gsc_120506985_2697250_1?wid=800&hei=800&qlt=70", true, "black", "25%", "Space Gray", prod6Imgs);
 
 // // modificar el valor de atributo privado
 // // prod4.setsupplier = "blank";
@@ -197,3 +197,25 @@ const prod6 = new Product("012345apb6", "telefono", 1500, 12, "https://falabella
 //         printCartCards();
 //         createTotalTemplate();
 // }
+
+// const comprar = ()=> {
+//     let totalApagarCliente = 0;
+//     let totalProductos = Number(prompt("¿cuantos productos desea llevar?"));
+    
+//     for (let index = 1; index <= totalProductos; index++) {
+//         const nombre = prompt("¿que producto desea llevar?");
+//         const cantidad = Number(prompt ("¿cuantas unidades?"));
+//         const precio = Number(prompt("¿cuanto sale cada unidad?"));
+//         const subtotal = cantidad * precio;
+//         totalApagarCliente = totalApagarCliente + subtotal;
+//         console.log("haz llevado " + cantidad +" unidades de " + nombre + " que costaron " + precio);
+//     }
+//     console.log("el total a pagar por los productos es s/." + totalApagarCliente);
+//     //alert("el total a pagar por los productos es s/." + totalApagar); 
+//     return totalApagarCliente;
+//     }
+//     const total1 = comprar();
+//     const total2 = comprar();
+//     const total3 = comprar();
+//     const total = total1 + total2 + total3;
+//     console.log("el total registrado es s/." + total);

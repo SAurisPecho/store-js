@@ -1,4 +1,4 @@
-function printFavorites() {
+export function printFavorites() {
     let myFavorite = document.querySelector(".containerMainFavorite");
     myFavorite.innerHTML = ""; // Limpiar el contenido actual
     // Obtener la lista de favoritos del almacenamiento local
@@ -30,7 +30,7 @@ function printFavorites() {
                     <div class="product-price">
                         <div class="top">
                             <div class="price">P.U. $ ${product.price}.00</div>
-                            <button class="btn-dlt" onclick="deleteItem(event)"><i class="fa-solid fa-trash-can"></i></button>
+                            <button class="btn-dlt"><i class="fa-solid fa-trash-can"></i></button>
                         </div>    
                     </div>
                 </div>
@@ -38,13 +38,19 @@ function printFavorites() {
             myFavorite.appendChild(productDiv);
         });
     }
+    // Agregar event listeners a los botones de eliminación
+    const deleteButtons = document.querySelectorAll(".btn-dlt");
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", function(event) {
+            deleteItem(event);
+        });
+    });
 }
-// Llamar a la función para imprimir los favoritos al cargar la página
-printFavorites();
 
 
 
-function deleteItem(event) {
+
+export function deleteItem(event) {
     if (event) {
         // Obtener el botón que activó la función
         const button = event.target;
@@ -57,11 +63,10 @@ function deleteItem(event) {
         removeFromFavorites(productId);
         // Volver a imprimir los favoritos para reflejar los cambios
         printFavorites();
-    }
+    } 
 }
-deleteItem();
 
-function removeFromFavorites(productId) {
+export function removeFromFavorites(productId) {
     let fav = JSON.parse(localStorage.getItem("fav")) || [];
     // Encontrar el índice del producto en el array de favoritos
     let index = fav.findIndex((favProduct) => favProduct.id === productId);
@@ -72,7 +77,6 @@ function removeFromFavorites(productId) {
         localStorage.setItem("fav", JSON.stringify(fav));
     }
 }
-removeFromFavorites();
 
 
 // function toggleFavorite() {

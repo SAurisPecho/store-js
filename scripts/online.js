@@ -1,8 +1,10 @@
-if (localStorage.getItem("isOnline") === null) {        // verificamos si isonline es null y si lo es le agregamos de valor false
+function onlineLocalStorage() {
+  if (localStorage.getItem("isOnline") === null) {        // verificamos si isonline es null y si lo es le agregamos de valor false
     localStorage.setItem("isOnline", "false");
   }
-  
-  function renderIcons() {                                  //definimos una función para evaluar el isOnline y renderizar los íconos
+}
+
+function renderIcons() {                                  //definimos una función para evaluar el isOnline y renderizar los íconos
     const isOnline = localStorage.getItem("isOnline") === "true";               // guardaos en una variable, isOnline es true
     const iconUsuarioOffline = document.querySelector(".iconUsuarioOffline");           //en variables almacenamos la ubicacion en el document de todos los iconos a renderizar 
     const iconUsuarioOnline = document.querySelector(".iconUsuarioOnline");
@@ -21,7 +23,8 @@ if (localStorage.getItem("isOnline") === null) {        // verificamos si isonli
       iconFav.classList.add("hidden");
     }
   }
-  
+
+function initialEvent() {  
   document.querySelector(".iconUsuarioOffline").addEventListener("click", function () {         //al icono offline le agregamos un escuchador de eventos,click con una funcion 
       localStorage.setItem("isOnline", "true");                                                     // cuando se hace click el valor de la clave cambia a true y uego se ejecuta la funcion de renderizado de iconos
       renderIcons();
@@ -33,3 +36,6 @@ if (localStorage.getItem("isOnline") === null) {        // verificamos si isonli
     });
   
   document.addEventListener("DOMContentLoaded", renderIcons);               //por ultimo  al document cada vez que cargue se le agrega la funcion para renderizar los iconos segun el valor de clave en localStorage
+}
+  
+export { onlineLocalStorage, renderIcons, initialEvent}

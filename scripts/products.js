@@ -237,3 +237,5 @@ const productsArray = [
 
 //Array ofertas de la semana
 const ofertsArray = [prod1, prod4, prod6];
+
+export { productsArray, ofertsArray};
