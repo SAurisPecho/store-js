@@ -3,7 +3,7 @@ const $dProducts = document.getElementById("dProducts");
 
 import { productsArray } from "./products.js";
 
-productsArray
+// productsArray
 
 //CARDS DE FORMA DINAMICA
 export function createCard (product) {
@@ -24,7 +24,7 @@ export function createCard (product) {
         </div>
     </a>
     `;
-}
+} 
 
 // Impresion de cards
 export let loadProducts = (productsArray, container) => { // guardamos en una variable una función que reciba como parámetro el array de products 
@@ -33,7 +33,7 @@ export let loadProducts = (productsArray, container) => { // guardamos en una va
     for (const product of productsArray) {   // iterar con for of para que cada vuelta cargue unna tarjeta
        productsTemplate += createCard(product); // dentro de for of colocamos products template +create card para cada producto, genera la representación HTML utilizando la plantilla y lo agrega al contenedor
       $dProducts.innerHTML = productsTemplate;
-    }
+      }
     }
 }
 

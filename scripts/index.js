@@ -20,10 +20,18 @@ import { createCard, loadProducts } from "./productCards.js";
 //MAIN FILTRADO DE PRODUCTOS
 import { captureText } from "./filterProducts.js";
 
-document.addEventListener("DOMContentLoaded", () => {         // Evento que se dispara cuando el DOM se ha cargado completamente, se ejecuta la función para cargar los productos
+document.addEventListener("DOMContentLoaded", () => {       
     const $dProducts = document.getElementById("dProducts");
     if ($dProducts){
-        loadProducts(productsArray, createCard);        //se llama a la función loadProducts que tiene como argumento productosArray donde estan todos los productos
+        loadProducts(productsArray, createCard);
     }
     captureText();
 })
+
+//SORT 
+import { sortProducts } from "./sortProducts.js";
+
+const filter = document.getElementById("filter-sort");
+if (filter) {
+    filter.addEventListener("change", sortProducts);
+}

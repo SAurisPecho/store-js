@@ -7,13 +7,9 @@ export function printTotal() {
     //Definir variable para almacenar el precio total
     let totalPrice = 0;
     if (cartproducts !== null) {
-      //Iterar sobre los productos del carrito
-      cartproducts.forEach((product) => {
-        //Sumar el precio de cada producto al total
-        totalPrice += product.price * product.quantity;
-      });
-    }
-  
+      totalPrice = cartproducts.reduce((accumulator, product) => 
+      accumulator + (product.price * product.quantity), 0);
+  }
     //Traer el selector del contenedor del total
     const totalContainer = document.querySelector("#total");
     //Limpiar el contenedor
@@ -30,3 +26,11 @@ export function printTotal() {
   `;
   comprar();
   }
+
+  // if (cartproducts !== null) {
+  //   //Iterar sobre los productos del carrito
+  //   cartproducts.forEach((product) => {
+  //     //Sumar el precio de cada producto al total
+  //     totalPrice += product.price * product.quantity;
+  //   });
+  // }

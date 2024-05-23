@@ -138,6 +138,19 @@ main {
     max-width: 1200px;
     margin: 0 auto;
 }
+.products-sort {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    gap: 1em;
+    align-items: center;
+}
+.products-sort select {
+    font-size: 16px;
+    padding: 3px;
+    border-radius: 10px;
+    text-align: center;
+}
 .product-container {
     display: grid;
     /* grid-template-columns: repeat(4, 1fr);
