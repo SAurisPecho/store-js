@@ -1,13 +1,10 @@
 //LAYOUT
-import { navegationBarr, options, fotterBarr, optionsFotter } from "./layout.js";
+import { navegationBarr, footerBarr } from "./layout.js";
 
-const navSelector = document.getElementById("nav");
-navegationBarr(navSelector, options);
+navegationBarr("nav");
+footerBarr("fotter");
 
-const fotterSelector = document.querySelector("#fotter");
-fotterBarr(fotterSelector, optionsFotter);
-
-//INICIAR/CIERRE DE SECCION 
+//INICIAR/CIERRE DE SECCION
 import { onlineLocalStorage, initialEvent } from "./online.js";
 
 onlineLocalStorage();
@@ -17,19 +14,13 @@ initialEvent();
 import { printCart } from "./printCart.js";
 printCart();
 
-//AÑADIR A FAVORITOS
-import "./toggleFavoriteCart.js"
-
-//BORRAR PRODUCTO DE CARRITO
-import "./deleteItemCart.js";
-
 //RENDERIZADO DEL TOTAL
 import { printTotal } from "./printCartTotal.js";
 printTotal();
 
 //BOTON DE COMPRAR
 import { comprar } from "./buy.js";
-comprar();
+comprar(); 
 
 
 

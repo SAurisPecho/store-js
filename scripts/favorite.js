@@ -76,40 +76,4 @@ export function removeFromFavorites(productId) {
         // Actualizar el almacenamiento local con la lista modificada de favoritos
         localStorage.setItem("fav", JSON.stringify(fav));
     }
-}
-
-
-// function toggleFavorite() {
-//   const icon = document.querySelector("#heartIcon");
-//   let myFavorite = document.querySelector(".containerMainFavorite");
-//   // obtener la lista de favoritos del almacenamiento local
-//   let fav = JSON.parse(localStorage.getItem("fav")) || [];
-//   // verificar si el producto está en la lista de favoritos con findIndex
-//   const index = fav.findIndex((favProduct) => favProduct.id === id);
-//   // Si el producto esta en la lista de favoritos, lo eliminamos
-//   if (index !== -1) {
-//     fav.splice(index, 1);
-//   // Cambiar el ícono del botón a 'fa-regular' porque ya es favorito
-//     icon.classList.replace("fa-solid", "fa-regular");
-//   } else { 
-//     const addfav = productsArray.find((each) => each.id === id);
-//     const newFavProduct = {
-//         id: id,
-//         title: addfav.title,
-//         price: addfav.price,
-//         image: addfav.image,
-//         policytax: addfav.policytax,
-//         description: addfav.description,
-//     };
-//     // Si el producto no está en la lista de favoritos, lo agregamos
-//     fav.push(newFavProduct);
-//     // Cambiar el ícono del botón a 'fa-solid' porque es favorito
-//     icon.classList.replace("fa-regular", "fa-solid");
-//   }
-//      localStorage.setItem("fav", JSON.stringify(fav));
-//      printFavorites();
-// }
-
-
-// toggleFavorite();
-
+} 

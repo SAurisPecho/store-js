@@ -1,11 +1,8 @@
 //LAYOUT
-import { navegationBarr, options, fotterBarr, optionsFotter } from "./layout.js";
+import { navegationBarr, footerBarr } from "./layout.js";
 
-const navSelector = document.getElementById("nav");
-navegationBarr(navSelector, options);
-
-const fotterSelector = document.querySelector("#fotter");
-fotterBarr(fotterSelector, optionsFotter);
+navegationBarr("nav");
+footerBarr("fotter");
 
 //INICIAR/CIERRE DE SECCION 
 import { onlineLocalStorage, initialEvent } from "./online.js";

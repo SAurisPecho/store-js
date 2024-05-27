@@ -1,7 +1,6 @@
-import { comprar } from "./buy.js";
 import { printCart } from "./printCart.js";
 import { printTotal } from "./printCartTotal.js";
-import { initializeFavoriteIcons, toggleFavorite } from "./toggleFavoriteCart.js";
+import { initializeFavoriteIcons } from "./toggleFavoriteCart.js";
 
 
 export function deleteItem(event) {

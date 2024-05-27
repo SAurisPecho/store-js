@@ -1,7 +1,6 @@
 //CARDS DE FORMA DINAMICA
-import { ofertsArray } from "./products.js";
 
-const $salesBlockCards = document.querySelector(".salesBlockCards")
+// const $salesBlockCards = document.querySelector(".salesBlockCards")
 
 function cardOferts (ofertArray) {
     return `
@@ -24,19 +23,51 @@ function cardOferts (ofertArray) {
     `;
 }
 // Impresion de cards
-let loadOferts = (ofertsArray) => { // guardamos en una variable una función que reciba como parámetro el array de oferts
-    let ofertsTemplate = "";   //Definir una variable para concatenar las tarjetas de productos
-     for (const ofertArray of ofertsArray) {   // iterar con for of para que cada vuelta cargue una tarjeta
-        ofertsTemplate += cardOferts(ofertArray); // dentro de for of colocamos ofertstemplate +create card para cada producto, genera la representación HTML utilizando la plantilla y lo agrega al contenedor
-       $salesBlockCards.innerHTML = ofertsTemplate;
-     }
- }
+
+function loadOferts(arrayProducts, idSelector) {
+    let productsTemplate = "";
+    let productsArrayPromise;
+  
+    if (arrayProducts && arrayProducts.length > 0) {
+      productsArrayPromise = Promise.resolve(arrayProducts);
+    } else {
+      productsArrayPromise = getProducts();
+    }
+  
+    productsArrayPromise
+      .then((productsArray) => {
+        const productsSelector = document.getElementById("salesBlockCards");
+        if (productsArray.length > 0) {
+          for (const element of productsArray) {
+            productsTemplate += cardOferts(element);
+          }
+          productsSelector.innerHTML = productsTemplate;
+        } else {
+          productsSelector.innerHTML =
+            "<h3 style='width: 100%; text-align: center'>No hay coincidencias</h3>";
+        }
+      })
+      .catch((error) => {
+        console.error("Hubo un problema al obtener los productos:", error);
+        const productsSelector = document.getElementById(idSelector);
+        productsSelector.innerHTML = "<h3 style='width: 100%; text-align: center'>No hay coincidencias</h3>";
+      });
+  }
 
 export { cardOferts, loadOferts}
 
-     document.addEventListener("DOMContentLoaded", () => { // Evento que se dispara cuando el DOM se ha cargado completamente, se ejecuta la función para cargar los productos
-        const $salesBlockCards = document.querySelector(".salesBlockCards");        //buscamos en el DOM el elemento 
-        if ($salesBlockCards){                                  //si el elemento $salesBlockCards = id salesBlockCards esta definida
-          loadOferts(ofertsArray);                     //se llama a la función loadProducts que tiene como argumento ofertsArray donde estan todos los productos en oferta
-         }
-     });
+// let loadOferts = (array, container) => { // guardamos en una variable una función que reciba como parámetro el array de oferts
+//     container = document.getElementById("id");
+//     let ofertsTemplate = "";   //Definir una variable para concatenar las tarjetas de productos
+//      for (const each of array) {   // iterar con for of para que cada vuelta cargue una tarjeta
+//         ofertsTemplate += cardOferts(each); // dentro de for of colocamos ofertstemplate +create card para cada producto, genera la representación HTML utilizando la plantilla y lo agrega al contenedor
+//        container.innerHTML = ofertsTemplate;
+//      }
+//  }
+
+    //  document.addEventListener("DOMContentLoaded", () => { // Evento que se dispara cuando el DOM se ha cargado completamente, se ejecuta la función para cargar los productos
+    //     const $salesBlockCards = document.querySelector(".salesBlockCards");        //buscamos en el DOM el elemento 
+    //     if ($salesBlockCards){                                  //si el elemento $salesBlockCards = id salesBlockCards esta definida
+    //       loadOferts(array);                     //se llama a la función loadProducts que tiene como argumento ofertsArray donde estan todos los productos en oferta
+    //      }
+    //  });

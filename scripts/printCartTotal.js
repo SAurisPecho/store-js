@@ -27,6 +27,8 @@ export function printTotal() {
   comprar();
   }
 
+
+//
   // if (cartproducts !== null) {
   //   //Iterar sobre los productos del carrito
   //   cartproducts.forEach((product) => {

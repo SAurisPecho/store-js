@@ -1,78 +1,85 @@
-function getParametro() {
-  const query = location.search; //para capturar la cadena de consulta
-  const params = new URLSearchParams(query); //Creamos una nueva URLSearchParams con la cadena de consulta
-  return params.get("id"); //usamos get para obtener el valor de id
-}
+import { getProducts } from "./products.js"
+import { changeMini } from "./changeMini.js";
+import { changeSubtotal } from "./changeSubtotal.js";
+import { saveProduct } from "./saveProduct.js";
+ import { inicioIcon, toggleFavorite } from "./toggleFavorite.js";
 
-import { productsArray} from "./products.js"
-import { assignButton, inicioIcon, toggleFavorite } from "./toggleFavorite.js";
-
-function printDetails() {
-  const id = getParametro("id")
-  //la funcion va a tener como parametro el id de la url actual
-  const product = productsArray.find((product) => product.id === id); //en la variable guardamos el array y buscamos por cada elemento el id el que debe coincidar con el parametro
+function printDetails(id) {
+  getProducts().then((products) => {
+  const product = products.find((product) => product.id === id); //en la variable guardamos el array y buscamos por cada elemento el id el que debe coincidar con el parametro
   const detailsTemplate = `
-    <div class="product-images-block">
-            <div class="thumbnail-images">
-              ${product.imgs.map(each => `<img class="thumbnail-container" src="${each}" alt="mini"/>`).join(" ") }
-            </div>
-            <img class="main-image" id="bigImg" src="${product.image}" alt="descrpcion-imagen${product.id}">
-          </div>
-          <div class="product-description-block">
-            <h1 class="title">${product.title}</h1>
-            <form class="selector">
-              <fieldset>
-                <label class="label" for="color">Color</label>
-                <select id="color" type="text" class="cuadro" placeholder="Selecciona un color">
-                  ${product.colors.map((each) => `<option value=${each}>${each}</option>`).join(" ")};
-                </select>
-              </fieldset>
-            </form>
-            <div class="descrip-details">
-              <span>Descripción:</span>
-              <p>${product.description}</p>
-            </div>
-          </div>
-          <div class="product-checkout-block">
-            <div class="checkout-container">
-              <div class="part1">
-                <span class="checkout-total-label">Total:</span>
-                <button class="btn-favorite" id="favoriteButton"><i class="fa-regular fa-heart" id="heartIcon"></i></button>
-              </div>
-              <h2 class="checkout-total-price" id= "price" >$${product.price}</h2>
-              <p class="checkout-description">${product.policytax}</p>
-              <ul class="checkout-policy-list">
-                <li>
-                  <span class="policy-icon"><img src="./assets/truck.png" alt="truck"></span>
-                  <span class="policy-desc">${product.shippingcosts}</span>
-                </li>
-                <li>
-                  <span class="policy-icon"><img src="./assets/plane.png" alt="plane"></span>
-                  <span class="policy-desc">${product.shippingtime}.</span>
-                </li>
-              </ul>
-              <div class="checkout-process">
-                <div class="top">
-                  <input type="number" id="quanty" value="1" min="1"/>
-                  <button class="btn-primary">Comprar</button>
+          <div class="product-images-block">
+                  <div class="thumbnail-images">
+                    ${product.imgs.map(each => `<img class="thumbnail-container" src="${each}" alt="mini"/>`).join(" ") }
+                  </div>
+                  <img class="main-image" id="bigImg" src="${product.image}" alt="descrpcion-imagen${product.id}">
                 </div>
-                <div class="bottom">
-                  <button class="btn-outline" id='${product.id}'" >Añadir al Carrito</button>
+                <div class="product-description-block">
+                  <h1 class="title">${product.title}</h1>
+                  <form class="selector">
+                    <fieldset>
+                      <label class="label" for="color-${product.id}">Color</label>
+                      <select id="color-${product.id}" type="text" class="cuadro" placeholder="Selecciona un color">
+                        ${product.colors.map((each) => `<option value=${each}>${each}</option>`).join(" ")};
+                      </select>
+                    </fieldset>
+                  </form>
+                  <div class="descrip-details">
+                    <span>Descripción:</span>
+                    <p>${product.description}</p>
+                  </div>
                 </div>
+                <div class="product-checkout-block">
+                  <div class="checkout-container">
+                    <div class="part1">
+                      <span class="checkout-total-label">Total:</span>
+                      <button class="btn-favorite" id="favoriteButton"><i class="fa-regular fa-heart" id="heartIcon"></i></button>
+                    </div>
+                    <h2 class="checkout-total-price" id= "price" >$${product.price}</h2>
+                    <p class="checkout-description">${product.policytax}</p>
+                    <ul class="checkout-policy-list">
+                      <li>
+                        <span class="policy-icon"><img src="./assets/truck.png" alt="truck"></span>
+                        <span class="policy-desc">${product.shippingcosts}</span>
+                      </li>
+                      <li>
+                        <span class="policy-icon"><img src="./assets/plane.png" alt="plane"></span>
+                        <span class="policy-desc">${product.shippingtime}.</span>
+                      </li>
+                    </ul>
+                    <div class="checkout-process">
+                      <div class="top">
+                        <input type="number" id="quanty" data-productid="${product.id}" value="1" min="1"/>
+                        <button class="btn-primary" >Comprar</button>
+                      </div>
+                      <div class="bottom">
+                        <button class="btn-outline" id='add-to-cart-${product.id}' >Añadir al Carrito</button>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
               </div>
-            </div>
-          </div>
-        </div>
-    `
-  const detailsSelector = document.querySelector("#columnsContainerDetails");
-  detailsSelector.innerHTML = detailsTemplate;
-  assignButton();
+          `;
+        const detailsSelector = document.querySelector("#columnsContainerDetails");
+        detailsSelector.innerHTML = detailsTemplate;
+        
+        const containerThumbnails = document.querySelectorAll(".thumbnail-container"); // Seleccionar todas las miniaturas
+          containerThumbnails.forEach(thumbnail => { // Iterar sobre cada miniatura
+              thumbnail.addEventListener("click", changeMini); // Agregar un event listener de clic a cada miniatura
+          });
+  document.querySelector("#quanty").addEventListener("change", changeSubtotal);  
+  document.querySelector(`#add-to-cart-${product.id}`).addEventListener("click", () => saveProduct(product.id));
+  document.querySelector("#heartIcon").addEventListener("click", () => toggleFavorite(product.id));       
+
+  inicioIcon(product.id);
+  }).catch((error) => {
+    console.error('Hubo un problema al obtener los productos:', error);
+  })
 }
 
 
 // printDetails(id);
-export { getParametro, printDetails};
-
+export { printDetails};
 
 
 // //PARA EL EVENTO DE CLICK DE LAS MINIATURAS

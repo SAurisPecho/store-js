@@ -38,4 +38,4 @@ function initialEvent() {
   document.addEventListener("DOMContentLoaded", renderIcons);               //por ultimo  al document cada vez que cargue se le agrega la funcion para renderizar los iconos segun el valor de clave en localStorage
 }
   
-export { onlineLocalStorage, renderIcons, initialEvent}
+export { onlineLocalStorage, initialEvent}

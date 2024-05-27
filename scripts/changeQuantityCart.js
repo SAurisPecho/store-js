@@ -1,4 +1,4 @@
-import { printCart, updateSubtotal } from "./printCart.js"
+import { updateSubtotal } from "./printCart.js"
 import { printTotal } from "./printCartTotal.js";
 
 

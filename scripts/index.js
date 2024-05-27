@@ -1,11 +1,8 @@
 //LAYOUT
-import { navegationBarr, options, fotterBarr, optionsFotter } from "./layout.js";
+import { navegationBarr, footerBarr } from "./layout.js";
 
-const navSelector = document.getElementById("nav");
-navegationBarr(navSelector, options);
-
-const fotterSelector = document.querySelector("#fotter");
-fotterBarr(fotterSelector, optionsFotter);
+navegationBarr("nav");
+footerBarr("fotter");
 
 //INICIAR/CIERRE DE SECCION 
 import { onlineLocalStorage, initialEvent } from "./online.js";
@@ -13,25 +10,15 @@ import { onlineLocalStorage, initialEvent } from "./online.js";
 onlineLocalStorage();
 initialEvent();
 
-//MAIN TODAS LAS CARTS DE PRODUCTOS
-import { productsArray } from "./products.js"
-import { createCard, loadProducts } from "./productCards.js";
+// MAIN TODAS LAS CARTS DE PRODUCTOS
+import { loadProducts } from "./productCards.js";
+import { getProducts } from "./products.js";
+getProducts().then((products) => loadProducts(products, "dProducts"));
 
-//MAIN FILTRADO DE PRODUCTOS
+// MAIN FILTRADO DE PRODUCTOS
 import { captureText } from "./filterProducts.js";
+captureText(); // Llama a la función captureText para que se ejecute cuando se escriba en el campo de búsqueda
 
-document.addEventListener("DOMContentLoaded", () => {       
-    const $dProducts = document.getElementById("dProducts");
-    if ($dProducts){
-        loadProducts(productsArray, createCard);
-    }
-    captureText();
-})
-
-//SORT 
+// SORT
 import { sortProducts } from "./sortProducts.js";
 
-const filter = document.getElementById("filter-sort");
-if (filter) {
-    filter.addEventListener("change", sortProducts);
-}

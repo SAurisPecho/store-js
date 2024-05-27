@@ -1,9 +1,7 @@
 import { assignButtons } from "./deleteItemCart.js";
 import { initializeQuantityInputs } from "./changeQuantityCart.js";
-import { comprar } from "./buy.js";
 
 //  Renderizar dinámicamente los productos del carrito
-
 export function printCart() {
   // Definiendo variable cartproducts que traiga el array del localStorage
   let cartproducts = JSON.parse(localStorage.getItem("cart"));
