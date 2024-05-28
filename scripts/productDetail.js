@@ -49,7 +49,7 @@ function printDetails(id) {
                     </ul>
                     <div class="checkout-process">
                       <div class="top">
-                        <input type="number" id="quanty" data-productid="${product.id}" value="1" min="1"/>
+                        <input type="number" id="quanty-${product.id}" data-productid="${product.id}" value="1" min="1"/>
                         <button class="btn-primary" >Comprar</button>
                       </div>
                       <div class="bottom">
@@ -67,8 +67,9 @@ function printDetails(id) {
           containerThumbnails.forEach(thumbnail => { // Iterar sobre cada miniatura
               thumbnail.addEventListener("click", changeMini); // Agregar un event listener de clic a cada miniatura
           });
-  document.querySelector("#quanty").addEventListener("change", changeSubtotal);  
+  
   document.querySelector(`#add-to-cart-${product.id}`).addEventListener("click", () => saveProduct(product.id));
+  document.querySelector(`#quanty-${product.id}`).addEventListener("change", changeSubtotal);  
   document.querySelector("#heartIcon").addEventListener("click", () => toggleFavorite(product.id));       
 
   inicioIcon(product.id);

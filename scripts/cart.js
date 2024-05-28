@@ -19,8 +19,8 @@ import { printTotal } from "./printCartTotal.js";
 printTotal();
 
 //BOTON DE COMPRAR
-import { comprar } from "./buy.js";
-comprar(); 
+import "./buy.js";
+
 
 
 

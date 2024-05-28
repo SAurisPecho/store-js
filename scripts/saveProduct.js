@@ -3,7 +3,6 @@ import { getProducts } from "./products.js";
 //PARA AGREGAR UN PRODUCTO AL CARRITO
 export function saveProduct(id) { 
   console.log("ID del producto:", id); 
-  alert("se añadio el producto al carrito!!!")
   
   getProducts()
     .then((products) => {
@@ -21,7 +20,7 @@ export function saveProduct(id) {
         policytax: found.policytax,
         description: found.description,
         color: document.querySelector("#color-" + id).value,
-        quantity: document.getElementById("quanty").value,
+        quantity: document.getElementById("quanty-"+id).value,
       };
     
       const storage = localStorage.getItem("cart");  
@@ -32,11 +31,43 @@ export function saveProduct(id) {
         cart = [];
       }
 
-      if ( cart.find((each) => each.id === id  && each.color === newObjectProduct.color)) {
+      const indxProduct = cart.findIndex(cartProduct => cartProduct.id === id && cartProduct.color === newObjectProduct.color);
+
+      if (indxProduct > -1) {  
+        const oldQuantity = cart[indxProduct].quantity;
+        cart[indxProduct].quantity = Number(oldQuantity) + Number(newObjectProduct.quantity);   //se actualiza la cantidad del producto sumando la cantidad nueva a la cantidad anterior.
+        const subtotal = cart[indxProduct].quantity * cart[indxProduct].price;
+
+        // Verificamos si el valor del input ha cambiado
+        const newQuantity = Number(document.getElementById("quanty-" + id).value);
+        if (newQuantity !== oldQuantity) {
+           Swal.fire({
+             position: 'top-end',
+             icon: 'info',
+             title: 'Cantidad actualizada',
+             text: `El subtotal del producto es $${subtotal}`,
+             showConfirmButton: false,
+             timer: 3000
+           });
+        }
+
+        Swal.fire({
+          title: "Producto añadido",
+          text: "El producto ha sido añadido al carrito",
+          icon: "warning",
+          confirmButtonText: "Aceptar"
+        });
       } else {
         cart.push(newObjectProduct);
         localStorage.setItem("cart", JSON.stringify(cart));
+        Swal.fire({
+          title:`Producto Añadido`,
+          text: `El producto ha sido añadido al carrito`,
+          icon: "success",
+          confirmButtonText: "Aceptar"
+        })
       }
+      localStorage.setItem("cart", JSON.stringify(cart));  
     })
     .catch((error) => {
       console.error('Hubo un problema al obtener los productos:', error);

@@ -24,8 +24,9 @@ export function printTotal() {
       <p class="cart-tax">Incluye impuesto País y percepción AFIP</p>
       <button class="cart-btn" id="buy" type="button">COMPRAR</button>
   `;
-  comprar();
-  }
+  const buySelector = document.getElementById("buy");
+  buySelector.addEventListener("click",comprar);
+}
 
 
 //

@@ -10,11 +10,15 @@ export function changeSubtotal(event) {
       const subTotal = quantity * proDuct.price; 
       const priceSelector = document.querySelector("#price"); 
       priceSelector.innerHTML = `$${subTotal}`; 
+      
     })
     .catch((error) => {
       console.error("Hubo un problema al obtener los productos:", error);
     });
-}
+} 
+
+
+
 
 // //PARA EL EVENTODE CAMBIO/CHANGE PARA EL SUBTOTAL
 // export function changeSubtotal(event) {   //definir la funcion con el evento onchange como parametro para que dependa segun su cambio
