@@ -3,6 +3,17 @@ import { getProducts } from "./products.js";
 //PARA AGREGAR UN PRODUCTO AL CARRITO
 export function saveProduct(id) { 
   console.log("ID del producto:", id); 
+  const isOnline = localStorage.getItem("isOnline") === "true";
+
+  if (!isOnline) {
+    Swal.fire({
+      title: "Usuario no registrado",
+      text: "Debe iniciar sesión para agregar productos al carrito.",
+      icon: "warning",
+      confirmButtonText: "Aceptar"
+    });
+  return
+  }
   
   getProducts()
     .then((products) => {

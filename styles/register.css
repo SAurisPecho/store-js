@@ -1,0 +1,149 @@
+body,
+html {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex-grow: 1;
+}
+.register {
+    height: 130px;
+}
+.header-container {
+    width: 100%;
+    display: flex;;
+    align-items: center;
+}
+.header-logo,
+.header-social {
+    width: 33%;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+.header-logo {
+    justify-content: center;
+}
+
+ul.header-social {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+.socialred {
+    display: flex;
+}
+ul.header-social li img {
+    display: flex;
+    font-size: 22px;
+    margin-right: 1em;
+    cursor: pointer;
+}
+ul.header-social li i {
+    margin-right: 1em;
+    cursor: pointer;
+}
+.iconUsuarioOnline {
+    color: white;
+    font-size: 20.5px;
+}
+.fa-solid.fa-circle-user {
+    font-size: 26px;
+    color: white;
+}
+.hidden { 
+    display: none; 
+}
+.form-container {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    padding: 50px 35%;
+}
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5%;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    margin-bottom: 20px;
+}
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.login-container input[type="submit"] {
+    width: 100%;
+    background-color: #ff3b3c;
+    display: flex;
+    color: white;
+    padding: 5px 0;
+    margin: 10px 0;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px ;
+    cursor: pointer;
+}
+.login-container input[type="submit"]:hover {
+    background-color: #d32f2f;
+}
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 13px;
+}
+.login-container p {
+    font-size: 12px;
+    color: #777;
+}
+.caracteres,
+.checkbox {
+    display: flex;
+    justify-content: start;
+}
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+.divider::before {
+    margin-right: 0.25em;
+}
+.divider::after {
+    margin-left: 0.25em;
+}
+.login-container p a:hover {
+    text-decoration: underline ;
+}
+
+
+
+
+
+

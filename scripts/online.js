@@ -26,16 +26,16 @@ function renderIcons() {                                  //definimos una funci√
 
 function initialEvent() {  
   document.querySelector(".iconUsuarioOffline").addEventListener("click", function () {         //al icono offline le agregamos un escuchador de eventos,click con una funcion 
-      localStorage.setItem("isOnline", "true");                                                     // cuando se hace click el valor de la clave cambia a true y uego se ejecuta la funcion de renderizado de iconos
-      renderIcons();
+    window.location.href = "login.html";
+    localStorage.setItem("isOnline", "true"); 
     });
     
   document.querySelector(".iconUsuarioOnline").addEventListener("click", function () {          //al icono online tambien le agregamos un eveto de click , cada vez que ocurre el valor de la clave en localStorage 
-      localStorage.setItem("isOnline", "false");                                                    // cambia a false y luegp se ejecuta la funcion para el renderizado de iconos
-      renderIcons();
+      window.location.href = "index.html";
+    localStorage.setItem("isOnline", "false"); 
     });
   
   document.addEventListener("DOMContentLoaded", renderIcons);               //por ultimo  al document cada vez que cargue se le agrega la funcion para renderizar los iconos segun el valor de clave en localStorage
 }
   
-export { onlineLocalStorage, initialEvent}
+export { onlineLocalStorage, initialEvent, renderIcons}

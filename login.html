@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - TiendaMia</title>
+    <script src="https://kit.fontawesome.com/bcea3e283b.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+    <header class="login">
+        <div class="header-container">
+            <a href="./index.html" class="header-logo">
+                <img class="header-logo-img" src="assets/tiendamia-logo.svg"  width="218" alt="logo TiendaMia" />
+            </a>
+            <ul class="header-social"> </ul>
+        </div>
+        <div class="nav" id="nav"> </div>
+    </header>
+    <div class="form-container">
+        <div class="login-container">
+            <h1>Ingresar</h1>
+            <form id="loginform">
+                <input type="email" id="email" name="email" placeholder="Tu direccion de E-mail" required />
+                <input type="password" id="password" name="password" placeholder="Contraseña" required />
+                <a href="#">¿Olvidaste tu Contraseña?</a>
+                <input type="submit" value="Ingresar" />
+            </form> 
+
+            <p>
+                *Al ingresar con Facebook o Google estás aceptando recibir ofertas
+                por email Tiendamia está protegida por reCAPTCHA y se aplican la
+                <a href="#">Política de Privacidad</a> y los
+                <a href="#"> Términos de Servicio de Google.</a>
+            </p>
+            <div class="divider"> ¿No tienes cuenta? </div>
+            <div class="register-link">
+                <a href="register.html">Regístrate</a>
+            </div>
+            <p>
+                Al registrarte estás aceptando nuestros 
+                <a href="#">Términos y Condiciones</a> y nuestras
+                <a href="#">Políticas de Privacidad.</a>
+            </p>
+        </div>
+    </div>
+    <script type="module" src="./scripts/login.js"></script>
+</body>
+</html>

@@ -83,7 +83,6 @@ section {
 
 /*BLOQUE DE NAVEGACION*/
 #nav {
-    padding: 35px 48px 0 48px;
     display: flex;
     justify-content: space-around;
     list-style-type: none;
