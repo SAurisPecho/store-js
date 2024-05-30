@@ -15,9 +15,15 @@ export function toggleFavorite(id, icon) {
   } else {
     // Verificar el límite de favoritos
     if (fav.length >= 4) {
-      alert("¡Ya tienes 4 productos favoritos! No puedes agregar más.");
+      Swal.fire({
+        title: "Producto no añadido",
+        text: "Ya tienes 4 productos favoritos! No puedes agregar más",
+        icon: "warning",
+        confirmButtonText: "Aceptar"
+      });            
       return;
     }
+    
 
     // Si el producto no está en la lista de favoritos, lo agregamos
     const addfav = products.find((each) => each.id === id);

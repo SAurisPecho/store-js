@@ -2,6 +2,18 @@ import { getProducts } from "./products.js";
 
 export function toggleFavorite(id) {
     console.log("ID del producto:", id);
+    const isOnline = localStorage.getItem("isOnline") === "true";
+
+  if (!isOnline) {
+    Swal.fire({
+      title: "Usuario no registrado",
+      text: "Debe iniciar sesión para agregar productos a favoritos.",
+      icon: "warning",
+      confirmButtonText: "Aceptar"
+    });
+  return
+  }
+
     getProducts()
     .then((products) => {
     const icon = document.querySelector("#heartIcon");
@@ -15,8 +27,13 @@ export function toggleFavorite(id) {
     } else {
             if (fav.length >= 4) {
             //si fav ya tiene mas de 4 productos muestra la alerta y con return detiene la funcion toggleFavorite
-            alert("¡Ya tienes 4 productos favoritos! No puedes agregar más.");
-            return;
+            Swal.fire({
+                title: "Producto no añadido",
+                text: "Ya tienes 4 productos favoritos! No puedes agregar más",
+                icon: "warning",
+                confirmButtonText: "Aceptar"
+              });            
+              return;
         }
         const addfav = products.find((each) => each.id === id);
         const newFavProduct = {

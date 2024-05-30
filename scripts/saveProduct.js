@@ -45,23 +45,6 @@ export function saveProduct(id) {
       const indxProduct = cart.findIndex(cartProduct => cartProduct.id === id && cartProduct.color === newObjectProduct.color);
 
       if (indxProduct > -1) {  
-        const oldQuantity = cart[indxProduct].quantity;
-        cart[indxProduct].quantity = Number(oldQuantity) + Number(newObjectProduct.quantity);   //se actualiza la cantidad del producto sumando la cantidad nueva a la cantidad anterior.
-        const subtotal = cart[indxProduct].quantity * cart[indxProduct].price;
-
-        // Verificamos si el valor del input ha cambiado
-        const newQuantity = Number(document.getElementById("quanty-" + id).value);
-        if (newQuantity !== oldQuantity) {
-           Swal.fire({
-             position: 'top-end',
-             icon: 'info',
-             title: 'Cantidad actualizada',
-             text: `El subtotal del producto es $${subtotal}`,
-             showConfirmButton: false,
-             timer: 3000
-           });
-        }
-
         Swal.fire({
           title: "Producto añadido",
           text: "El producto ha sido añadido al carrito",

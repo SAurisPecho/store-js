@@ -10,7 +10,15 @@ export function changeSubtotal(event) {
       const subTotal = quantity * proDuct.price; 
       const priceSelector = document.querySelector("#price"); 
       priceSelector.innerHTML = `$${subTotal}`; 
-      
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'info',
+        title: 'Cantidad actualizada',
+        text: `El subtotal del producto es $${subTotal}`,
+        showConfirmButton: false,
+        timer: 3000
+      });
     })
     .catch((error) => {
       console.error("Hubo un problema al obtener los productos:", error);
